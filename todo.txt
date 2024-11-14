@@ -1,0 +1,14 @@
+TODO
+-Add home page
+-Make the game
+-Create websocket
+-Make the out of screen map thing work
+
+STILL WORKING ON
+-Add home page
+-Create websocket
+
+COMPLETED
+-
+-
+-
