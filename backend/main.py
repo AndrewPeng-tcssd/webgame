@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import random
 import json
+import time
 
 app = FastAPI()
 
@@ -24,9 +25,16 @@ async def websocket_endpoint(websocket: WebSocket):
     players.append({"id": player_id, "x": 0, "y": 0, "name": "name"})
     try:
         while True:
+            await websocket.send_text(json.dumps(players))
             dt = await websocket.receive_text()
             data = json.loads(dt)
-            await websocket.send_text(json.dumps(players))
+            #print(data)
+            for player in players:
+                if player["id"] == player_id:
+                    player["x"] += data["direction"]["x"]
+                    player["y"] += data["direction"]["y"]
+            time.sleep(.001)
+
     except WebSocketDisconnect:
         await player_disconnect(player_id, websocket)
     
@@ -35,7 +43,10 @@ async def player_disconnect(player_id, websocket):
         if players[i]["id"] == player_id:
             del players[i]
             await websocket.close()
-        
+
+
+
+
 #@app.get("/")
 #async def get():
     #return {"message": "Hello World"}
