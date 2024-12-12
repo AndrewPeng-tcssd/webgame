@@ -5,14 +5,18 @@ TODO
 
 
 BUGS
--movement
+-
+-
+
 
 STILL WORKING ON
 -Add home page
--movement
 -idea
 
 COMPLETED
 -create websocket
+-movement!
 -
--
+
+
+completed movement today. it only renders the player itself in the middle but the other players where they are
