@@ -19,4 +19,4 @@ COMPLETED
 -
 
 
-completed movement today. it only renders the player itself in the middle but the other players where they are
+completed movement today. it only renders the player itself in the middle but the other players where they are --dec 11 2024
