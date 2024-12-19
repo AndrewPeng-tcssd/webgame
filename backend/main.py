@@ -17,15 +17,18 @@ app.add_middleware(
 )
 
 players = []
-map_width = 3000
-map_height = 1500
+map_width = 1
+map_height = 1
+
+def random_color():
+    return "#{:06x}".format(random.randint(0, 0xFFFFFF))
 
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
     player_id = id(websocket)
     id_sent = False
-    players.append({"id": player_id, "x": 650, "y": 400, "name": "name"})
+    players.append({"id": player_id, "x": 650, "y": 400, "name": "name", "color": random_color()})
     try:
         while True:
             if id_sent:
